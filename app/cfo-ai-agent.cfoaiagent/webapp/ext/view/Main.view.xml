@@ -1,0 +1,57 @@
+<mvc:View xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:l="sap.ui.layout"
+    controllerName="cfoaiagent.cfoaiagent.ext.view.Main">
+    
+    <Page id="Main" title="CFO AI Agent" showNavButton="false" enableScrolling="false">
+        <customHeader>
+            <Bar id="mainBar">
+                <contentLeft>
+                    <Title id="mainTitle" text="✨ CFO AI Agent" level="H4"/>
+                </contentLeft>
+                <contentRight>
+                    <Button id="btnClear" text="Limpiar" icon="sap-icon://delete" press="onClearChat" type="Transparent"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <l:VerticalLayout id="mainLayout" width="100%">
+
+                <!-- Chat messages -->
+                <List id="chatList" 
+                    noDataText="Haz una pregunta sobre el P&amp;L" 
+                    showSeparators="None"
+                    width="100%">
+                </List>
+
+                <!-- Input -->
+                <HBox id="inputBox" alignItems="End" class="sapUiSmallMargin">
+                    <TextArea 
+                        id="questionInput"
+                        placeholder="Ej: ¿Cuál fue el Revenue de Argentina en Q1 2020?"
+                        width="100%"
+                        rows="2"
+                        class="sapUiSmallMarginEnd"
+                        liveChange="onInputChange"/>
+                    <Button 
+                        id="btnSend"
+                        text="Enviar"
+                        type="Emphasized"
+                        icon="sap-icon://paper-plane"
+                        press="onSendQuestion"
+                        enabled="false"/>
+                </HBox>
+
+                <!-- Suggested questions -->
+                <HBox id="suggestionsBox" wrap="Wrap" class="sapUiTinyMarginBegin sapUiTinyMarginBottom">
+                    <Button id="sug1" text="Revenue AR Q1 2020" type="Ghost" press="onSuggestedQuestion" class="sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+                    <Button id="sug2" text="Top productos por margen" type="Ghost" press="onSuggestedQuestion" class="sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+                    <Button id="sug3" text="Comparar UK vs US 2019" type="Ghost" press="onSuggestedQuestion" class="sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+                    <Button id="sug4" text="Net Income ZA 2020" type="Ghost" press="onSuggestedQuestion" class="sapUiTinyMarginEnd sapUiTinyMarginBottom"/>
+                </HBox>
+
+            </l:VerticalLayout>
+        </content>
+    </Page>
+</mvc:View>

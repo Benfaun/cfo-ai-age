@@ -1,0 +1,50 @@
+{
+  "name": "cfo-ai-agent",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/http-client": "^4.6.0",
+    "@sap-cloud-sdk/util": "^4.6.0",
+    "@sap/cds": "^9",
+    "@sap/hdbext": "^8.1.13",
+    "@sap/low-code-event-handler": "^1.2.5",
+    "@sap/xsenv": ">=3.3.2 <3.3.3",
+    "@sap/xssec": "^4.13.0",
+    "hdb": "^2.27.1",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/dev-cap-tools": "^1.31.0",
+    "@sapui5/distribution-metadata": "^1.147.1",
+    "@ui5/cli": "^4.0.52"
+  },
+  "scripts": {
+    "start": "cds-watch",
+    "start-local": "npm run generate-entry-point && npm run cds-watch",
+    "generate-entry-point": "dev-cap-tools gen-entrypoint",
+    "cds-watch": "cds watch --open",
+    "watch-cfo-ai-agent.cfoaiagent": "cds watch --open cfo-ai-agent.cfoaiagent/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "auth": {
+        "[development]": {
+          "kind": "dummy"
+        },
+        "[production]": {
+          "kind": "xsuaa"
+        }
+      }
+    }
+  },
+  "lcap": true,
+  "sapux": [
+    "app/cfo-ai-agent.cfoaiagent"
+  ]
+}

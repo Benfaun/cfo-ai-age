@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFO AI Agent</title>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+    </style>
+    <script>
+        window["sap-ui-config"] = {
+            theme: "sap_horizon",
+            libs: "sap.m,sap.ui.layout",
+            resourceRoots: { "cfoaiagent.cfoaiagent": "./" },
+            compatVersion: "edge",
+            async: true,
+            frameOptions: "trusted",
+            onInit: function() {
+                sap.ui.require(["sap/ui/core/mvc/XMLView"], function(XMLView) {
+                    XMLView.create({
+                        viewName: "cfoaiagent.cfoaiagent.ext.view.Main"
+                    }).then(function(oView) {
+                        oView.placeAt("content");
+                    }).catch(function(err) {
+                        document.getElementById("content").innerHTML =
+                            "<p style='color:red;padding:20px'>Error: " + err.message + "</p>";
+                    });
+                });
+            }
+        };
+    </script>
+    <script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"></script>
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="content">
+</body>
+</html>
